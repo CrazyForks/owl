@@ -18,10 +18,6 @@ Workforce example using Qwen models from Alibaba Cloud.
 To run this file, you need to configure the Qwen API key.
 You can obtain your API key from Bailian platform: bailian.console.aliyun.com
 Set it as QWEN_API_KEY="your-api-key" in your .env file or add it to your environment variables.
-
-Qwen models support:
-- QWEN_MAX: For text-based tasks
-- QWEN_VL_MAX: For vision-language tasks (multimodal)
 """
 
 import sys
@@ -59,43 +55,39 @@ set_log_level(level="DEBUG")
 def construct_agent_list() -> List[Dict[str, Any]]:
     """Construct a list of agents with their configurations."""
     
-    # Use QWEN_MAX for text-based tasks
     web_model = ModelFactory.create(
         model_platform=ModelPlatformType.QWEN,
-        model_type=ModelType.QWEN_MAX,
+        model_type="qwen3.5-plus",
         model_config_dict={"temperature": 0},
     )
     
-    # Use QWEN_VL_MAX for document processing (supports multimodal)
     document_processing_model = ModelFactory.create(
         model_platform=ModelPlatformType.QWEN,
-        model_type=ModelType.QWEN_VL_MAX,
+        model_type="qwen3.5-plus",
         model_config_dict={"temperature": 0},
     )
     
-    # Use QWEN_MAX for reasoning tasks
     reasoning_model = ModelFactory.create(
         model_platform=ModelPlatformType.QWEN,
-        model_type=ModelType.QWEN_MAX,
+        model_type="qwen3.5-plus",
         model_config_dict={"temperature": 0},
     )
     
-    # Use QWEN_VL_MAX for image analysis
     image_analysis_model = ModelFactory.create( 
         model_platform=ModelPlatformType.QWEN,
-        model_type=ModelType.QWEN_VL_MAX,
+        model_type="qwen3.5-plus",
         model_config_dict={"temperature": 0},
     )
 
     browsing_model = ModelFactory.create(
         model_platform=ModelPlatformType.QWEN,
-        model_type=ModelType.QWEN_MAX,
+        model_type="qwen3.5-plus",
         model_config_dict={"temperature": 0},
     )
 
     planning_model = ModelFactory.create(
         model_platform=ModelPlatformType.QWEN,
-        model_type=ModelType.QWEN_MAX,
+        model_type="qwen3.5-plus",
         model_config_dict={"temperature": 0},
     )
 
@@ -193,7 +185,7 @@ def construct_workforce() -> Workforce:
     coordinator_agent_kwargs = {
         "model": ModelFactory.create(
             model_platform=ModelPlatformType.QWEN,
-            model_type=ModelType.QWEN_MAX,
+            model_type="qwen3.5-plus",
             model_config_dict={"temperature": 0},
         )
     }
@@ -201,7 +193,7 @@ def construct_workforce() -> Workforce:
     task_agent_kwargs = {
         "model": ModelFactory.create(
             model_platform=ModelPlatformType.QWEN,
-            model_type=ModelType.QWEN_MAX,
+            model_type="qwen3.5-plus",
             model_config_dict={"temperature": 0},
         )
     }
