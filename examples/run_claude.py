@@ -33,6 +33,7 @@ from camel.toolkits import (
     ImageAnalysisToolkit,
     SearchToolkit,
     VideoAnalysisToolkit,
+    BrowserToolkit,
     FileToolkit,
 )
 from camel.types import ModelPlatformType, ModelType
@@ -57,25 +58,37 @@ def construct_agent_list() -> List[Dict[str, Any]]:
     
     web_model = ModelFactory.create(
         model_platform=ModelPlatformType.ANTHROPIC,
-        model_type=ModelType.CLAUDE_3_7_SONNET,
+        model_type=ModelType.CLAUDE_OPUS_4_6,
         model_config_dict={"temperature": 0},
     )
     
     document_processing_model = ModelFactory.create(
         model_platform=ModelPlatformType.ANTHROPIC,
-        model_type=ModelType.CLAUDE_3_7_SONNET,
+        model_type=ModelType.CLAUDE_OPUS_4_6,
         model_config_dict={"temperature": 0},
     )
     
     reasoning_model = ModelFactory.create(
         model_platform=ModelPlatformType.ANTHROPIC,
-        model_type=ModelType.CLAUDE_3_7_SONNET,
+        model_type=ModelType.CLAUDE_OPUS_4_6,
         model_config_dict={"temperature": 0},
     )
     
     image_analysis_model = ModelFactory.create( 
         model_platform=ModelPlatformType.ANTHROPIC,
-        model_type=ModelType.CLAUDE_3_7_SONNET,
+        model_type=ModelType.CLAUDE_OPUS_4_6,
+        model_config_dict={"temperature": 0},
+    )
+
+    browsing_model = ModelFactory.create(
+        model_platform=ModelPlatformType.ANTHROPIC,
+        model_type=ModelType.CLAUDE_OPUS_4_6,
+        model_config_dict={"temperature": 0},
+    )
+
+    planning_model = ModelFactory.create(
+        model_platform=ModelPlatformType.ANTHROPIC,
+        model_type=ModelType.CLAUDE_OPUS_4_6,
         model_config_dict={"temperature": 0},
     )
 
@@ -85,6 +98,11 @@ def construct_agent_list() -> List[Dict[str, Any]]:
     code_runner_toolkit = CodeExecutionToolkit(sandbox="subprocess", verbose=True)
     file_toolkit = FileToolkit()
     excel_toolkit = ExcelToolkit()
+    browser_toolkit = BrowserToolkit(
+        headless=False,  # Set to True for headless mode (e.g., on remote servers)
+        web_agent_model=browsing_model,
+        planning_agent_model=planning_model,
+    )
 
     web_agent = ChatAgent(
         """You are a helpful assistant that can search the web, extract webpage content, simulate browser actions, and provide relevant information to solve the given task.
@@ -110,6 +128,7 @@ Here are some tips that help you perform web search:
             FunctionTool(search_toolkit.search_duckduckgo),
             FunctionTool(search_toolkit.search_wiki),
             FunctionTool(document_processing_toolkit.extract_document_content),
+            *browser_toolkit.get_tools(),
         ]
     )
     
@@ -166,7 +185,7 @@ def construct_workforce() -> Workforce:
     coordinator_agent_kwargs = {
         "model": ModelFactory.create(
             model_platform=ModelPlatformType.ANTHROPIC,
-            model_type=ModelType.CLAUDE_3_7_SONNET,
+            model_type=ModelType.CLAUDE_OPUS_4_6,
             model_config_dict={"temperature": 0},
         )
     }
@@ -174,7 +193,7 @@ def construct_workforce() -> Workforce:
     task_agent_kwargs = {
         "model": ModelFactory.create(
             model_platform=ModelPlatformType.ANTHROPIC,
-            model_type=ModelType.CLAUDE_3_7_SONNET,
+            model_type=ModelType.CLAUDE_OPUS_4_6,
             model_config_dict={"temperature": 0},
         )
     }
