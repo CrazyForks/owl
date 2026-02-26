@@ -3,7 +3,6 @@
 	🦉 OWL: 优化劳动力学习的通用智能体，用于处理现实世界的自动化任务
 </h1>
 
-
 <div align="center">
 
 [![文档][docs-image]][docs-url]
@@ -15,7 +14,6 @@
 [![Hugging Face][huggingface-image]][huggingface-url]
 [![Star][star-image]][star-url]
 [![软件许可证][package-license-image]][package-license-url]
-
 
 </div>
 
@@ -49,14 +47,12 @@
 
 ![](./assets/owl_architecture.png)
 
-
-
 <br>
-
 
 </div>
 
 <!-- # Key Features -->
+
 # 📋 目录
 
 - [📋 目录](#-目录)
@@ -252,6 +248,7 @@ OWL 需要各种 API 密钥来与不同的服务进行交互。`owl/.env_templat
 ### 选项 1：使用 `.env` 文件（推荐）
 
 1. **复制并重命名模板**：
+
    ```bash
    cd owl
    cp .env_template .env
@@ -259,7 +256,7 @@ OWL 需要各种 API 密钥来与不同的服务进行交互。`owl/.env_templat
 
 2. **配置你的 API 密钥**：
    在你喜欢的文本编辑器中打开 `.env` 文件，并在相应字段中插入你的 API 密钥。
-   
+
    > **注意**：对于最小示例（`examples/run_mini.py`），你只需要配置 LLM API 密钥（例如，`OPENAI_API_KEY`）。
 
 ### 选项 2：直接设置环境变量
@@ -267,11 +264,13 @@ OWL 需要各种 API 密钥来与不同的服务进行交互。`owl/.env_templat
 或者，你可以直接在终端中设置环境变量：
 
 - **macOS/Linux (Bash/Zsh)**：
+
   ```bash
   export OPENAI_API_KEY="你的-openai-api-密钥"
   ```
 
 - **Windows (命令提示符)**：
+
   ```batch
   set OPENAI_API_KEY="你的-openai-api-密钥"
   ```
@@ -359,7 +358,7 @@ npx -y @wonderwhy-er/desktop-commander setup --force-file-protocol
 # 🚀 快速开始
 
 ## 基本用法
-   
+
 运行以下示例：
 
 ```bash
@@ -438,6 +437,7 @@ print(f"答案：{answer}")
 OWL 将自动调用与文档相关的工具来处理文件并提取答案。
 
 你可以尝试以下示例任务：
+
 - "查询苹果公司的最新股票价格"
 - "分析关于气候变化的最新推文情绪"
 - "帮我调试这段 Python 代码：[在此粘贴你的代码]"
@@ -449,7 +449,9 @@ OWL 将自动调用与文档相关的工具来处理文件并提取答案。
 
 OWL 的 MCP 集成为 AI 模型与各种工具和数据源的交互提供了标准化的方式。
 在使用MCP前，需要先安装Node.js。
+
 ### **安装 Node.js**
+
 ### Windows
 
 下载官方安装包：[Node.js](https://nodejs.org/zh-cn)。
@@ -457,22 +459,27 @@ OWL 的 MCP 集成为 AI 模型与各种工具和数据源的交互提供了标�
 安装时，勾选 "Add to PATH" 选项。
 
 ### Linux
+
 ```bash
 sudo apt update
 sudo apt install nodejs npm -y
 ```
+
 ### Mac
+
 ```bash
 brew install node
 ```
 
 ### **安装 MCP 服务**
+
 ```bash
 npm install -g @executeautomation/playwright-mcp-server
 npx playwright install-deps
 ```
 
 查看我们的MCP示例：
+
 - `examples/run_mcp.py` - 基础MCP功能演示 (本地调用，需要安装依赖)
 - `examples/run_mcp_sse.py` - 使用SSE协议的示例 (使用远程服务，无需安装依赖)
 
@@ -506,17 +513,19 @@ tools = [
 关键工具包包括：
 
 ### 多模态工具包（需要模型具备多模态能力）
+
 - **BrowserToolkit**：浏览器自动化，用于网页交互和导航
 - **VideoAnalysisToolkit**：视频处理和内容分析
 - **ImageAnalysisToolkit**：图像分析和解释
 
 ### 基于文本的工具包
+
 - **AudioAnalysisToolkit**：音频处理（需要 OpenAI API）
 - **CodeExecutionToolkit**：Python 代码执行和评估
 - **SearchToolkit**：网络搜索（Google、DuckDuckGo、维基百科）
 - **DocumentProcessingToolkit**：文档解析（PDF、DOCX等）
 
-其他专用工具包：ArxivToolkit、GitHubToolkit、GoogleMapsToolkit、MathToolkit、NetworkXToolkit、NotionToolkit、RedditToolkit、WeatherToolkit等。完整工具包列表请参阅[CAMEL工具包文档](https://docs.camel-ai.org/key_modules/tools.html#built-in-toolkits)。
+其他专用工具包：ArxivToolkit、GitHubToolkit、GoogleMapsToolkit、MathToolkit、NetworkXToolkit、NotionToolkit、RedditToolkit、WeatherToolkit等。完整工具包列表请参阅[CAMEL工具包文档](https://docs.camel-ai.org/key_modules/tools)。
 
 ## 自定义配置
 
@@ -579,11 +588,13 @@ python owl/webapp_jp.py
 要复现我们在 GAIA 基准测试中获得的 58.18 分：
 
 1. 切换到 `gaia58.18` 分支：
+
 ```bash
 git checkout gaia58.18
 ```
 
 2. 运行评估脚本：
+
 ```bash
 python examples/run_gaia_roleplaying.py
 ```
@@ -605,7 +616,6 @@ python examples/run_gaia_roleplaying.py
 
 如果你觉得这个仓库对你有帮助，请引用：
 
-
 ```
 @misc{owl2025,
   title        = {OWL: Optimized Workforce Learning for General Multi-Agent Assistance in Real-World Task Automation},
@@ -625,6 +635,7 @@ python examples/run_gaia_roleplaying.py
 3. 提交包含您改进的拉取请求
 
 **当前开放贡献的问题：**
+
 - [#1915](https://github.com/camel-ai/camel/issues/1915)
 - [#2190](https://github.com/camel-ai/camel/issues/2190)
 - [#2165](https://github.com/camel-ai/camel/issues/2165)
@@ -636,7 +647,8 @@ python examples/run_gaia_roleplaying.py
 要认领一个问题，只需在该问题下留言表明您的兴趣即可。
 
 # 🔥 社区
-加入我们的 ([*Discord*](https://discord.camel-ai.org/) 或 [*微信*](https://ghli.org/camel/wechat.png)) 社区，一起探索智能体扩展规律的边界。
+
+加入我们的 ([_Discord_](https://discord.camel-ai.org/) 或 [_微信_](https://ghli.org/camel/wechat.png)) 社区，一起探索智能体扩展规律的边界。
 
 加入我们，参与更多讨论！
 
@@ -678,7 +690,6 @@ cd camel
 [star-url]: https://github.com/camel-ai/owl/stargazers
 [package-license-image]: https://img.shields.io/badge/License-Apache_2.0-blue.svg
 [package-license-url]: https://github.com/camel-ai/owl/blob/main/licenses/LICENSE
-
 [colab-url]: https://colab.research.google.com/drive/1AzP33O8rnMW__7ocWJhVBXjKziJXPtim?usp=sharing
 [colab-image]: https://colab.research.google.com/assets/colab-badge.svg
 [huggingface-url]: https://huggingface.co/camel-ai

@@ -18,12 +18,10 @@ from camel.models import ModelFactory
 from camel.agents import ChatAgent
 from camel.toolkits import (
     FunctionTool,
-    AudioAnalysisToolkit,
     CodeExecutionToolkit,
     ExcelToolkit,
     ImageAnalysisToolkit,
     SearchToolkit,
-    VideoAnalysisToolkit,
     BrowserToolkit,
     FileToolkit,
 )
@@ -45,26 +43,25 @@ set_log_level(level="DEBUG")
 
 
 def construct_agent_list() -> List[Dict[str, Any]]:
-
     web_model = ModelFactory.create(
         model_platform=ModelPlatformType.OPENAI,
         model_type=ModelType.GPT_5_2,
         model_config_dict={"temperature": 0},
     )
-    
+
     document_processing_model = ModelFactory.create(
         model_platform=ModelPlatformType.OPENAI,
         model_type=ModelType.GPT_5_2,
         model_config_dict={"temperature": 0},
     )
-    
+
     reasoning_model = ModelFactory.create(
         model_platform=ModelPlatformType.OPENAI,
         model_type=ModelType.GPT_5_2,
         model_config_dict={"temperature": 0},
     )
-    
-    image_analysis_model = ModelFactory.create( 
+
+    image_analysis_model = ModelFactory.create(
         model_platform=ModelPlatformType.OPENAI,
         model_type=ModelType.GPT_5_2,
         model_config_dict={"temperature": 0},
@@ -83,7 +80,9 @@ def construct_agent_list() -> List[Dict[str, Any]]:
     )
 
     search_toolkit = SearchToolkit()
-    document_processing_toolkit = DocumentProcessingToolkit(model=document_processing_model)
+    document_processing_toolkit = DocumentProcessingToolkit(
+        model=document_processing_model
+    )
     image_analysis_toolkit = ImageAnalysisToolkit(model=image_analysis_model)
     code_runner_toolkit = CodeExecutionToolkit(sandbox="subprocess", verbose=True)
     file_toolkit = FileToolkit()
@@ -95,7 +94,7 @@ def construct_agent_list() -> List[Dict[str, Any]]:
     )
 
     web_agent = ChatAgent(
-"""
+        """
 You are a helpful assistant that can search the web, extract webpage content, simulate browser actions, and provide relevant information to solve the given task.
 Keep in mind that:
 - Do not be overly confident in your own knowledge. Searching can provide a broader perspective and help validate existing knowledge.  
@@ -121,9 +120,9 @@ Here are some tips that help you perform web search:
             FunctionTool(search_toolkit.search_wiki),
             FunctionTool(document_processing_toolkit.extract_document_content),
             *browser_toolkit.get_tools(),
-        ]
+        ],
     )
-    
+
     document_processing_agent = ChatAgent(
         "You are a helpful assistant that can process documents and multimodal data, and can interact with file system.",
         document_processing_model,
@@ -132,9 +131,9 @@ Here are some tips that help you perform web search:
             FunctionTool(image_analysis_toolkit.ask_question_about_image),
             FunctionTool(code_runner_toolkit.execute_code),
             *file_toolkit.get_tools(),
-        ]
+        ],
     )
-    
+
     reasoning_coding_agent = ChatAgent(
         "You are a helpful assistant that specializes in reasoning and coding, and can think step by step to solve the task. When necessary, you can write python code to solve the task. If you have written code, do not forget to execute the code. Never generate codes like 'example code', your code should be able to fully solve the task. You can also leverage multiple libraries, such as requests, BeautifulSoup, re, pandas, etc, to solve the task. For processing excel files, you should write codes to process them.",
         reasoning_model,
@@ -142,27 +141,27 @@ Here are some tips that help you perform web search:
             FunctionTool(code_runner_toolkit.execute_code),
             FunctionTool(excel_toolkit.extract_excel_content),
             FunctionTool(document_processing_toolkit.extract_document_content),
-        ]
+        ],
     )
 
     agent_list = []
-    
+
     web_agent_dict = {
         "name": "Web Agent",
         "description": "A helpful assistant that can search the web, extract webpage content, simulate browser actions, and retrieve relevant information.",
-        "agent": web_agent
+        "agent": web_agent,
     }
-    
+
     document_processing_agent_dict = {
         "name": "Document Processing Agent",
         "description": "A helpful assistant that can process a variety of local and remote documents, including pdf, docx, images, audio, and video, etc.",
-        "agent": document_processing_agent
+        "agent": document_processing_agent,
     }
-    
+
     reasoning_coding_agent_dict = {
         "name": "Reasoning Coding Agent",
         "description": "A helpful assistant that specializes in reasoning, coding, and processing excel files. However, it cannot access the internet to search for information. If the task requires python execution, it should be informed to execute the code after writing it.",
-        "agent": reasoning_coding_agent
+        "agent": reasoning_coding_agent,
     }
 
     agent_list.append(web_agent_dict)
@@ -172,7 +171,6 @@ Here are some tips that help you perform web search:
 
 
 def construct_workforce() -> Workforce:
-    
     coordinator_agent_kwargs = {
         "model": ModelFactory.create(
             model_platform=ModelPlatformType.OPENAI,
@@ -180,7 +178,7 @@ def construct_workforce() -> Workforce:
             model_config_dict={"temperature": 0},
         )
     }
-    
+
     task_agent_kwargs = {
         "model": ModelFactory.create(
             model_platform=ModelPlatformType.OPENAI,
@@ -188,17 +186,17 @@ def construct_workforce() -> Workforce:
             model_config_dict={"temperature": 0},
         )
     }
-    
+
     task_agent = ChatAgent(
         "You are a helpful assistant that can decompose tasks and assign tasks to workers.",
-        **task_agent_kwargs
+        **task_agent_kwargs,
     )
-    
+
     coordinator_agent = ChatAgent(
         "You are a helpful assistant that can assign tasks to workers.",
-        **coordinator_agent_kwargs
+        **coordinator_agent_kwargs,
     )
-    
+
     workforce = Workforce(
         "Workforce",
         task_agent=task_agent,
@@ -206,7 +204,7 @@ def construct_workforce() -> Workforce:
     )
 
     agent_list = construct_agent_list()
-    
+
     for agent_dict in agent_list:
         workforce.add_single_agent_worker(
             agent_dict["description"],
@@ -220,14 +218,14 @@ def main():
     r"""Main function to run the OWL system with an example question."""
     # Default research question
     default_task_prompt = "Use Browser Toolkit to summarize the github stars, fork counts, etc. of camel-ai's owl framework, and write the numbers into a python file using the plot package, save it locally, and run the generated python file. Note: You have been provided with the necessary tools to complete this task."
-    
+
     # Override default task if command line argument is provided
     task_prompt = sys.argv[1] if len(sys.argv) > 1 else default_task_prompt
-    
+
     task = Task(
         content=task_prompt,
     )
-    
+
     workforce = construct_workforce()
 
     processed_task = workforce.process_task(task)

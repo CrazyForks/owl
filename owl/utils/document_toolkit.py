@@ -238,10 +238,11 @@ class DocumentProcessingToolkit(BaseToolkit):
 
             return str(data["data"][0]["markdown"])
         else:
-            logger.warning("Firecrawl API key is not set. Use crawl4ai to extract the content of the webpage.")
+            logger.warning(
+                "Firecrawl API key is not set. Use crawl4ai to extract the content of the webpage."
+            )
             return self._extract_webpage_content_with_crawl4ai(url)
-    
-    
+
     def _extract_webpage_content_with_crawl4ai(self, url: str) -> str:
         r"""Extract the content of a webpage using crawl4ai."""
         try:
@@ -250,7 +251,7 @@ class DocumentProcessingToolkit(BaseToolkit):
         except Exception as e:
             logger.error(f"Error while extracting the content of the webpage: {e}")
             return "Error while extracting the content of the webpage."
-    
+
     async def _async_extract_webpage_content_with_crawl4ai(self, url: str) -> str:
         r"""Async helper method to extract webpage content using crawl4ai."""
         try:
@@ -262,9 +263,10 @@ class DocumentProcessingToolkit(BaseToolkit):
                     logger.warning("No markdown content extracted from the webpage.")
                     return "No content found on the webpage."
         except Exception as e:
-            logger.error(f"Error while extracting the content of the webpage with crawl4ai: {e}")
+            logger.error(
+                f"Error while extracting the content of the webpage with crawl4ai: {e}"
+            )
             return "Error while extracting the content of the webpage."
-
 
     def _download_file(self, url: str):
         r"""Download a file from a URL and save it to the cache directory."""

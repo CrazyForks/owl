@@ -18,9 +18,7 @@
 [![Star][star-image]][star-url]
 [![Package License][package-license-image]][package-license-url]
 
-
 </div>
-
 
 <hr>
 
@@ -56,10 +54,10 @@ Our vision is to revolutionize how AI agents collaborate to solve real-world tas
 
 <br>
 
-
 </div>
 
 <!-- # Key Features -->
+
 # 📋 Table of Contents
 
 - [📋 Table of Contents](#-table-of-contents)
@@ -117,7 +115,6 @@ Our vision is to revolutionize how AI agents collaborate to solve real-world tas
 
 # 🔥 News
 
-
 <div align="center" style="background-color: #e8f5e9; padding: 15px; border-radius: 10px; border: 2px solid #4caf50; margin: 20px 0;">
   <h3 style="color: #2e7d32; margin: 0; font-size: 1.3em;">
     🧩 <b>NEW: COMMUNITY AGENT CHALLENGES!</b> 🧩
@@ -146,8 +143,8 @@ Our vision is to revolutionize how AI agents collaborate to solve real-world tas
 </div> -->
 
 - **[2025.09.22]**: Exicited to announce that OWL has been accepted by NeurIPS 2025!🚀 Check the latest paper [here](https://arxiv.org/abs/2505.23885).
-- **[2025.07.21]**: We open-sourced the training dataset and model checkpoints of OWL project. Training code coming soon.  [huggingface link](https://huggingface.co/collections/camel-ai/optimized-workforce-learning-682ef4ab498befb9426e6e27).
-- **[2025.05.27]**: We released the technical report of OWL, including more details on the workforce (framework) and optimized workforce learning (training methodology).  [paper](https://arxiv.org/abs/2505.23885).
+- **[2025.07.21]**: We open-sourced the training dataset and model checkpoints of OWL project. Training code coming soon. [huggingface link](https://huggingface.co/collections/camel-ai/optimized-workforce-learning-682ef4ab498befb9426e6e27).
+- **[2025.05.27]**: We released the technical report of OWL, including more details on the workforce (framework) and optimized workforce learning (training methodology). [paper](https://arxiv.org/abs/2505.23885).
 - **[2025.05.18]**: We open-sourced an initial version for replicating workforce experiment on GAIA [here](https://github.com/camel-ai/owl/tree/gaia69).
 - **[2025.04.18]**: We uploaded OWL's new GAIA benchmark score of **69.09%**, ranking #1 among open-source frameworks. Check the technical report [here](https://hypnotic-mind-6bd.notion.site/OWL-Optimized-Workforce-Learning-for-General-Multi-Agent-Assistance-in-Real-World-Task-Automation-1d4004aeb21380158749c7f84b20643f).
 - **[2025.03.27]**: Integrate SearxNGToolkit performing web searches using SearxNG search engine.
@@ -161,7 +158,6 @@ Our vision is to revolutionize how AI agents collaborate to solve real-world tas
 - **[2025.03.09]**: We added a web-based user interface that makes it easier to interact with the system.
 - **[2025.03.07]**: We open-sourced the codebase of the 🦉 OWL project.
 - **[2025.03.03]**: OWL achieved the #1 position among open-source frameworks on the GAIA benchmark with a score of 58.18.
-
 
 # 🎬 Demo Video
 
@@ -187,6 +183,7 @@ This video demonstrates how to install OWL locally and showcases its capabilitie
 ## **Prerequisites**
 
 ### Install Python
+
 Before installing OWL, ensure you have Python installed (version 3.10, 3.11, or 3.12 is supported):
 
 > **Note for GAIA Benchmark Users**: When running the GAIA benchmark evaluation, please use the `gaia58.18` branch which includes a customized version of the CAMEL framework in the `owl/camel` directory. This version contains enhanced toolkits with improved stability specifically optimized for the GAIA benchmark compared to the standard CAMEL installation.
@@ -334,12 +331,14 @@ OWL requires various API keys to interact with different services.
 You can set environment variables directly in your terminal:
 
 - **macOS/Linux (Bash/Zsh)**:
+
   ```bash
   export OPENAI_API_KEY="your-openai-api-key-here"
   # Add other required API keys as needed
   ```
 
 - **Windows (Command Prompt)**:
+
   ```batch
   set OPENAI_API_KEY=your-openai-api-key-here
   ```
@@ -356,11 +355,12 @@ You can set environment variables directly in your terminal:
 If you prefer using a `.env` file instead, you can:
 
 1. **Copy and Rename the Template**:
+
    ```bash
    # For macOS/Linux
    cd owl
    cp .env_template .env
-   
+
    # For Windows
    cd owl
    copy .env_template .env
@@ -463,7 +463,6 @@ print(f"\033[94mAnswer: {answer}\033[0m")
 
 OWL will then automatically invoke document-related tools to process the file and extract the answer.
 
-
 ### Example Tasks
 
 Here are some tasks you can try with OWL:
@@ -481,7 +480,9 @@ Here are some tasks you can try with OWL:
 OWL's MCP integration provides a standardized way for AI models to interact with various tools and data sources:
 
 Before using MCP, you need to install Node.js first.
+
 ### **Install Node.js**
+
 ### Windows
 
 Download the official installer: [Node.js](https://nodejs.org/en).
@@ -489,22 +490,27 @@ Download the official installer: [Node.js](https://nodejs.org/en).
 Check "Add to PATH" option during installation.
 
 ### Linux
+
 ```bash
 sudo apt update
 sudo apt install nodejs npm -y
 ```
+
 ### Mac
+
 ```bash
 brew install node
 ```
 
 ### **Install Playwright MCP Service**
+
 ```bash
 npm install -g @executeautomation/playwright-mcp-server
 npx playwright install-deps
 ```
 
 Try our comprehensive MCP examples:
+
 - `examples/run_mcp.py` - Basic MCP functionality demonstration (local call, requires dependencies)
 - `examples/run_mcp_sse.py` - Example using the SSE protocol (Use remote services, no dependencies)
 
@@ -538,17 +544,19 @@ tools = [
 Key toolkits include:
 
 ### Multimodal Toolkits (Require multimodal model capabilities)
+
 - **BrowserToolkit**: Browser automation for web interaction and navigation
 - **VideoAnalysisToolkit**: Video processing and content analysis
 - **ImageAnalysisToolkit**: Image analysis and interpretation
 
 ### Text-Based Toolkits
+
 - **AudioAnalysisToolkit**: Audio processing (requires OpenAI API)
 - **CodeExecutionToolkit**: Python code execution and evaluation
 - **SearchToolkit**: Web searches (Google, DuckDuckGo, Wikipedia)
 - **DocumentProcessingToolkit**: Document parsing (PDF, DOCX, etc.)
 
-Additional specialized toolkits: ArxivToolkit, GitHubToolkit, GoogleMapsToolkit, MathToolkit, NetworkXToolkit, NotionToolkit, RedditToolkit, WeatherToolkit, and more. For a complete list, see the [CAMEL toolkits documentation](https://docs.camel-ai.org/key_modules/tools.html#built-in-toolkits).
+Additional specialized toolkits: ArxivToolkit, GitHubToolkit, GoogleMapsToolkit, MathToolkit, NetworkXToolkit, NotionToolkit, RedditToolkit, WeatherToolkit, and more. For a complete list, see the [CAMEL toolkits documentation](https://docs.camel-ai.org/key_modules/tools).
 
 ## Customizing Your Configuration
 
@@ -613,6 +621,7 @@ Furthermore, to ensure optimal performance on the GAIA benchmark, please note th
 When running the benchmark evaluation:
 
 1. Switch to the `gaia69` branch:
+
    ```bash
    git checkout gaia69
    ```
@@ -623,7 +632,6 @@ When running the benchmark evaluation:
    ```
 
 This will execute the same configuration that achieved our top-ranking performance on the GAIA benchmark.
-
 
 # ⏱️ Future Plans
 
@@ -647,6 +655,7 @@ We welcome contributions from the community! Here's how you can help:
 3. Submit pull requests with your improvements
 
 **Current Issues Open for Contribution:**
+
 - [#1915](https://github.com/camel-ai/camel/issues/1915)
 - [#2190](https://github.com/camel-ai/camel/issues/2190)
 - [#2165](https://github.com/camel-ai/camel/issues/2165)
@@ -659,9 +668,10 @@ To take on an issue, simply leave a comment stating your interest.
 
 # 🔥 Community
 
-Join us ([*Discord*](https://discord.camel-ai.org/) or [*WeChat*](https://ghli.org/camel/wechat.png)) in pushing the boundaries of finding the scaling laws of agents.
+Join us ([_Discord_](https://discord.camel-ai.org/) or [_WeChat_](https://ghli.org/camel/wechat.png)) in pushing the boundaries of finding the scaling laws of agents.
 
 Join us for further discussions!
+
 <!-- ![](./assets/community.png) -->
 <img src="./assets/community_code.jpeg" width="50%" />
 
@@ -675,7 +685,7 @@ A: If OWL determines that a task can be completed using non-browser tools (such 
 
 **Q: Which Python version should I use?**
 
-A: OWL supports Python 3.10, 3.11, and 3.12. 
+A: OWL supports Python 3.10, 3.11, and 3.12.
 
 **Q: How can I contribute to the project?**
 
@@ -709,16 +719,15 @@ cd camel
 
 If you find this repo useful, please cite:
 
-
 ```
 @misc{hu2025owl,
-      title={OWL: Optimized Workforce Learning for General Multi-Agent Assistance in Real-World Task Automation}, 
+      title={OWL: Optimized Workforce Learning for General Multi-Agent Assistance in Real-World Task Automation},
       author={Mengkang Hu and Yuhang Zhou and Wendong Fan and Yuzhou Nie and Bowei Xia and Tao Sun and Ziyu Ye and Zhaoxuan Jin and Yingru Li and Qiguang Chen and Zeyu Zhang and Yifeng Wang and Qianshuo Ye and Bernard Ghanem and Ping Luo and Guohao Li},
       year={2025},
       eprint={2505.23885},
       archivePrefix={arXiv},
       primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2505.23885}, 
+      url={https://arxiv.org/abs/2505.23885},
 }
 ```
 
@@ -726,15 +735,12 @@ If you find this repo useful, please cite:
 
 [![Star History Chart](https://api.star-history.com/svg?repos=camel-ai/owl&type=Date)](https://star-history.com/#camel-ai/owl&Date)
 
-
-
 [docs-image]: https://img.shields.io/badge/Documentation-EB3ECC
 [docs-url]: https://camel-ai.github.io/camel/index.html
 [star-image]: https://img.shields.io/github/stars/camel-ai/owl?label=stars&logo=github&color=brightgreen
 [star-url]: https://github.com/camel-ai/owl/stargazers
 [package-license-image]: https://img.shields.io/badge/License-Apache_2.0-blue.svg
 [package-license-url]: https://github.com/camel-ai/owl/blob/main/licenses/LICENSE
-
 [colab-url]: https://colab.research.google.com/drive/1AzP33O8rnMW__7ocWJhVBXjKziJXPtim?usp=sharing
 [colab-image]: https://colab.research.google.com/assets/colab-badge.svg
 [huggingface-url]: https://huggingface.co/camel-ai

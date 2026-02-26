@@ -110,11 +110,11 @@ class OwlRolePlaying(RolePlaying):
         if assistant_agent is not None:
             # Ensure functionality consistent with our configuration
             if (
-                hasattr(assistant_agent, 'output_language')
+                hasattr(assistant_agent, "output_language")
                 and output_language is not None
             ):
                 assistant_agent.output_language = output_language
-            if hasattr(assistant_agent, 'stop_event'):
+            if hasattr(assistant_agent, "stop_event"):
                 assistant_agent.stop_event = stop_event
             self.assistant_agent = assistant_agent
             # Handle potential None system_message - use provided or fallback
@@ -137,12 +137,9 @@ class OwlRolePlaying(RolePlaying):
 
         if user_agent is not None:
             # Ensure functionality consistent with our configuration
-            if (
-                hasattr(user_agent, 'output_language')
-                and output_language is not None
-            ):
+            if hasattr(user_agent, "output_language") and output_language is not None:
                 user_agent.output_language = output_language
-            if hasattr(user_agent, 'stop_event'):
+            if hasattr(user_agent, "stop_event"):
                 user_agent.stop_event = stop_event
             self.user_agent = user_agent
             # Handle potential None system_message - use provided or fallback

@@ -2,7 +2,6 @@
 	🦉 OWL: 労働力学習の最適化による、現実世界のタスク自動化における一般的なマルチエージェント支援
 </h1>
 
-
 <div align="center">
 
 [![ドキュメント][docs-image]][docs-url]
@@ -15,9 +14,7 @@
 [![Star][star-image]][star-url]
 [![パッケージライセンス][package-license-image]][package-license-url]
 
-
 </div>
-
 
 <hr>
 
@@ -55,10 +52,10 @@
 
 <br>
 
-
 </div>
 
 <!-- # Key Features -->
+
 # 📋 目次
 
 - [📋 目次](#-目次)
@@ -112,7 +109,6 @@
 - [⭐ Star History](#-star-history)
 
 # 🔥 ニュース
-
 
 <div align="center" style="background-color: #e8f5e9; padding: 15px; border-radius: 10px; border: 2px solid #4caf50; margin: 20px 0;">
   <h3 style="color: #2e7d32; margin: 0; font-size: 1.3em;">
@@ -255,6 +251,7 @@ OWLは、さまざまなサービスと対話するために複数のAPIキー�
 ### オプション1：`.env`ファイルを使用する（推奨）
 
 1. **テンプレートをコピーして名前を変更**：
+
    ```bash
    cd owl
    cp .env_template .env
@@ -262,7 +259,7 @@ OWLは、さまざまなサービスと対話するために複数のAPIキー�
 
 2. **APIキーを設定**：
    お好みのテキストエディタで`.env`ファイルを開き、対応するフィールドにAPIキーを挿入します。
-   
+
    > **注意**：最小限の例（`examples/run_mini.py`）の場合、LLM APIキー（例：`OPENAI_API_KEY`）のみを設定する必要があります。
 
 ### オプション2：環境変数を直接設定
@@ -270,11 +267,13 @@ OWLは、さまざまなサービスと対話するために複数のAPIキー�
 または、ターミナルで環境変数を直接設定することもできます：
 
 - **macOS/Linux (Bash/Zsh)**：
+
   ```bash
   export OPENAI_API_KEY="your-openai-api-key-here"
   ```
 
 - **Windows (コマンドプロンプト)**：
+
   ```batch
   set OPENAI_API_KEY="your-openai-api-key-here"
   ```
@@ -285,8 +284,6 @@ OWLは、さまざまなサービスと対話するために複数のAPIキー�
   ```
 
 > **注意**：ターミナルで直接設定された環境変数は、現在のセッションでのみ有効です。
-
-
 
 ## **Dockerでの実行**
 
@@ -435,7 +432,6 @@ print(f"\033[94mAnswer: {answer}\033[0m")
 
 OWLは自動的にドキュメント関連のツールを呼び出してファイルを処理し、回答を抽出します。
 
-
 ### 例のタスク
 
 以下のタスクをOWLで試してみてください：
@@ -453,7 +449,9 @@ OWLは自動的にドキュメント関連のツールを呼び出してファ�
 OWLのMCP統合は、AIモデルがさまざまなツールやデータソースと相互作用するための標準化された方法を提供します：
 
 MCPを使用する前に、まずNode.jsをインストールする必要があります。
+
 ### **Node.jsのインストール**
+
 ### Windows
 
 公式インストーラーをダウンロード：[Node.js](https://nodejs.org/en)。
@@ -461,16 +459,20 @@ MCPを使用する前に、まずNode.jsをインストールする必要があ�
 インストール中に「Add to PATH」オプションをチェックします。
 
 ### Linux
+
 ```bash
 sudo apt update
 sudo apt install nodejs npm -y
 ```
+
 ### Mac
+
 ```bash
 brew install node
 ```
 
 ### **Playwright MCPサービスのインストール**
+
 ```bash
 npm install -g @executeautomation/playwright-mcp-server
 npx playwright install-deps
@@ -508,17 +510,19 @@ tools = [
 主要なツールキットには以下が含まれます：
 
 ### マルチモーダルツールキット（マルチモーダルモデル機能が必要）
+
 - **BrowserToolkit**：ウェブインタラクションとナビゲーションのためのブラウザ自動化
 - **VideoAnalysisToolkit**：ビデオ処理とコンテンツ分析
 - **ImageAnalysisToolkit**：画像解析と解釈
 
 ### テキストベースのツールキット
+
 - **AudioAnalysisToolkit**：音声処理（OpenAI APIが必要）
 - **CodeExecutionToolkit**：Pythonコードの実行と評価
 - **SearchToolkit**：ウェブ検索（Google、DuckDuckGo、Wikipedia）
 - **DocumentProcessingToolkit**：ドキュメント解析（PDF、DOCXなど）
 
-その他の専門ツールキット：ArxivToolkit、GitHubToolkit、GoogleMapsToolkit、MathToolkit、NetworkXToolkit、NotionToolkit、RedditToolkit、WeatherToolkitなど。完全なツールキットのリストについては、[CAMELツールキットドキュメント](https://docs.camel-ai.org/key_modules/tools.html#built-in-toolkits)を参照してください。
+その他の専門ツールキット：ArxivToolkit、GitHubToolkit、GoogleMapsToolkit、MathToolkit、NetworkXToolkit、NotionToolkit、RedditToolkit、WeatherToolkitなど。完全なツールキットのリストについては、[CAMELツールキットドキュメント](https://docs.camel-ai.org/key_modules/tools)を参照してください。
 
 ## カスタマイズ設定
 
@@ -580,6 +584,7 @@ python owl/webapp_jp.py
 OWLのGAIAベンチマークスコア58.18を再現するには：
 
 1. `gaia58.18`ブランチに切り替え：
+
    ```bash
    git checkout gaia58.18
    ```
@@ -608,7 +613,6 @@ OWLのGAIAベンチマークスコア58.18を再現するには：
 
 このリポジトリが役立つと思われる場合は、以下を引用してください：
 
-
 ```
 @misc{owl2025,
   title        = {OWL: Optimized Workforce Learning for General Multi-Agent Assistance in Real-World Task Automation},
@@ -628,6 +632,7 @@ OWLのGAIAベンチマークスコア58.18を再現するには：
 3. 改善点を含むプルリクエストを提出する
 
 **現在貢献を受け付けている問題：**
+
 - [#1915](https://github.com/camel-ai/camel/issues/1915)
 - [#2190](https://github.com/camel-ai/camel/issues/2190)
 - [#2165](https://github.com/camel-ai/camel/issues/2165)
@@ -636,14 +641,16 @@ OWLのGAIAベンチマークスコア58.18を再現するには：
 - [#1538](https://github.com/camel-ai/camel/issues/1538)
 - [#1481](https://github.com/camel-ai/camel/issues/1481)
 
-
 問題を引き受けるには、興味を示すコメントを残すだけです。
 
 # 🔥 コミュニティ
-エージェントのスケーリング法則を見つけるための限界を押し広げるために、私たちと一緒に参加してください（[*Discord*](https://discord.camel-ai.org/)または[*WeChat*](https://ghli.org/camel/wechat.png)）。
+
+エージェントのスケーリング法則を見つけるための限界を押し広げるために、私たちと一緒に参加してください（[_Discord_](https://discord.camel-ai.org/)または[_WeChat_](https://ghli.org/camel/wechat.png)）。
 
 さらなる議論に参加してください！
+
 <!-- ![](./assets/community.png) -->
+
 ![](./assets/community.jpeg)
 
 # ❓ FAQ
@@ -676,15 +683,12 @@ cd camel
 
 [![Star History Chart](https://api.star-history.com/svg?repos=camel-ai/owl&type=Date)](https://star-history.com/#camel-ai/owl&Date)
 
-
-
 [docs-image]: https://img.shields.io/badge/Documentation-EB3ECC
 [docs-url]: https://camel-ai.github.io/camel/index.html
 [star-image]: https://img.shields.io/github/stars/camel-ai/owl?label=stars&logo=github&color=brightgreen
 [star-url]: https://github.com/camel-ai/owl/stargazers
 [package-license-image]: https://img.shields.io/badge/License-Apache_2.0-blue.svg
 [package-license-url]: https://github.com/camel-ai/owl/blob/main/licenses/LICENSE
-
 [colab-url]: https://colab.research.google.com/drive/1AzP33O8rnMW__7ocWJhVBXjKziJXPtim?usp=sharing
 [colab-image]: https://colab.research.google.com/assets/colab-badge.svg
 [huggingface-url]: https://huggingface.co/camel-ai

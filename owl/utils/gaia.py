@@ -144,7 +144,9 @@ class GAIABenchmark(BaseBenchmark):
                             data["file_name"] = path / data["file_name"]
                         self._data[label].append(data)
             else:
-                raise FileNotFoundError(f"Metadata file not found: {metadata_parquet_path} or {metadata_jsonl_path}")
+                raise FileNotFoundError(
+                    f"Metadata file not found: {metadata_parquet_path} or {metadata_jsonl_path}"
+                )
 
         return self
 
