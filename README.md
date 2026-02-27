@@ -48,6 +48,7 @@
 
 Our vision is to revolutionize how AI agents collaborate to solve real-world tasks. By leveraging dynamic agent interactions, OWL enables more natural, efficient, and robust task automation across diverse domains.
 
+If you find this repo useful, please consider citing our work ([citation](#-cite)).
 </div>
 
 ![](./assets/owl_architecture.png)
@@ -101,7 +102,6 @@ Our vision is to revolutionize how AI agents collaborate to solve real-world tas
   - [Starting the Web UI](#starting-the-web-ui)
   - [Features](#features)
 - [🧪 Experiments](#-experiments)
-- [⏱️ Future Plans](#️-future-plans)
 - [📄 License](#-license)
 - [🤝 Contributing](#-contributing)
 - [🔥 Community](#-community)
@@ -616,7 +616,9 @@ The web interface is built using Gradio and runs locally on your machine. No dat
 # 🧪 Experiments
 
 To reproduce OWL's GAIA benchmark score:
-Furthermore, to ensure optimal performance on the GAIA benchmark, please note that our `gaia69` branch includes a customized version of the CAMEL framework in the `owl/camel` directory. This version contains enhanced toolkits with improved stability for gaia benchmark compared to the standard CAMEL installation.
+
+We also provide an enhanced OWL in the `main` branch, so you can directly benefit from upgraded toolkits and increased stability even without switching branches. 
+For the original GAIA-specific performance, we recommend our `gaia69` branch.
 
 When running the benchmark evaluation:
 
@@ -632,15 +634,6 @@ When running the benchmark evaluation:
    ```
 
 This will execute the same configuration that achieved our top-ranking performance on the GAIA benchmark.
-
-# ⏱️ Future Plans
-
-We're continuously working to improve OWL. Here's what's on our roadmap:
-
-- [x] Write a technical blog post detailing our exploration and insights in multi-agent collaboration in real-world tasks
-- [x] Enhance the toolkit ecosystem with more specialized tools for domain-specific tasks
-- [x] Develop more sophisticated agent interaction patterns and communication protocols
-- [x] Improve performance on complex multi-step reasoning tasks
 
 # 📄 License
 
