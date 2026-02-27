@@ -17,6 +17,7 @@
 [![Hugging Face][huggingface-image]][huggingface-url]
 [![Star][star-image]][star-url]
 [![Package License][package-license-image]][package-license-url]
+[![Citation](https://img.shields.io/badge/Citation-arXiv%3A2505.23885-purple)](https://arxiv.org/abs/2505.23885)
 
 </div>
 
